@@ -1,13 +1,13 @@
 # Optimal-Breaks
  
-### Task: 1 
 
-## (a) Given a word = “envelope” and the list of breaks {1, 3}, if the original problem is totalCost(word[0,7], {1, 3}) identify the subproblems. How is the total minimum cost computed from these subproblems? (You must express the original problem in terms of the subproblems you have identified.) 
+
+### (a) Given a word = “envelope” and the list of breaks {1, 3}, if the original problem is totalCost(word[0,7], {1, 3}) identify the subproblems. How is the total minimum cost computed from these subproblems? (You must express the original problem in terms of the subproblems you have identified.) 
 
 Ans: We are given a String S (any word) of length n and a break list B ={b0,b1,b1,…..bm-1} where the breaks are in an increasing order. We can assume that B has the length m. If we break the String S at a position b,( b taken from the break list). Then we will get two strings S[0,b] and S[b+1,n-1]. Lets identify the optimal substructure it exhibits of the subproblems we are going to find. Consider a sequence of break positions {j1, j2, j3…jm-1}. So, lets break our string S at a position B[ j1 ], B[j2]… and so on. The first break point B[ j1 ], it breaks the string into two substrings S_1 and S_2. The remaining subsequence B[ j2 ] to B[ jm-1] are smaller than B[ j1 ] breaks in S1 optimally. Subsequence B[ j2 ] to B[ jm-1] values(cost) are greater than B[ j1 ] break in S2 optimally. Given that the word ENVELOPE and list of Break B={1,3}. We have two decisions, either we choose 1 or 3. If we break at position 1 we get word[0,1] and word[2,7]. We cannot break [0,1] further. We break word[2,7] to word[2,3], [4,7] Then if we again break the word at position 3 we get word[0,3] and word [4,7]. From [0,3], we can break it to word [0,1] and word[2,3]. We can already identify our subproblems from this. In other words, subproblems will be indexed by sub lists of the list of breaks needed to be made. We try to take each possible break with minimal cost.
 
 
-## (b) Write down the formula for totalCost(word[i, j], breakList) as a recursive function. (You should use your answer to (a) as a guide: what do you do arithmetically with the subproblems? Don’t worry if your answer is not something you can implement directly.)
+### (b) Write down the formula for totalCost(word[i, j], breakList) as a recursive function. (You should use your answer to (a) as a guide: what do you do arithmetically with the subproblems? Don’t worry if your answer is not something you can implement directly.)
 
 Ans: We have taken list B and element b from the answer (a)
 totalCost(word[i,j], B)= 0, if b== j or b == -1 where b belongs to B list
@@ -18,7 +18,7 @@ word[i,k].cost is the cost of left sub string, word[k,j].cost is the for breakin
 right substring and B[ j ] – B[ i ] is the cost breaking Word[ i, j ]
 
 
-## (c) Identify the termination inputs (those which return 0 for totalCost on those inputs). i.e. say what values of pairs [i, j] and breakList imply that totalCost(word[i, j], breakList) = 0
+### (c) Identify the termination inputs (those which return 0 for totalCost on those inputs). i.e. say what values of pairs [i, j] and breakList imply that totalCost(word[i, j], breakList) = 0
 
 Ans:
 If the break point, b >= j or b<0 or the word is an empty string or b is null the
@@ -26,12 +26,12 @@ cost will be zero. For example, if a word is HOLIDAY, break point is 6 it will
 return 0 because 6 is the last index of the word HOLIDAY (b=last index of the
 HOLIDAY).
 
-## (d) Identify the simplest (non-zero) subproblem for which totalCost(word[i,j], breakList) needs no recursive call.
+### (d) Identify the simplest (non-zero) subproblem for which totalCost(word[i,j], breakList) needs no recursive call.
 
 Ans: When the break list has just one element we can get the cost without a recursive
 call or if b== j or b == -1. Already mentioned the cases in answer c
 
-## (e) Identify row and column labels associated with a dynamic programming table for computing totalCost(word[i, j], breakList). i.e. what is the structure of a table whose entries correspond exactly with totalCost(word[i,j], breakList)? (Hint: your table entries should correspond exactly to the parameters in the function you are trying to compute.)
+### (e) Identify row and column labels associated with a dynamic programming table for computing totalCost(word[i, j], breakList). i.e. what is the structure of a table whose entries correspond exactly with totalCost(word[i,j], breakList)? (Hint: your table entries should correspond exactly to the parameters in the function you are trying to compute.)
 
 Ans: Lets increase the break list size of B by 2. We will add -1 at the beginning and N-1 (N is the size of the string word). In the end, we will have the substrings S0,1, S1,2, S2,3, …. Sk,k+1. This S string represents the word[ i,j] in the parameter of the function. By parameter definition,
 final Si,j := S[ B[i]+1,…,B[j] ] ( for word word[i,j]).
@@ -99,7 +99,7 @@ DP[0,4]= min{ DP[0,1] + D[1,4] + B[4] – B[0], DP[0,2] + D[2,4] + B[4]
 
 we get minimum cost 12 at DP[0,4] which is DP[0,m+1]
 
-## (g) Identify the table entries which will be non-zero. (There is a simple relationship between the row and column labels related to the problem that identifies when a table entry is non-zero.)
+### (g) Identify the table entries which will be non-zero. (There is a simple relationship between the row and column labels related to the problem that identifies when a table entry is non-zero.)
 
 Ans: DP[i,j] = min k∈{i+1,...,j−1} { i+1,..., j−1} { DP[i,k] + DP[k,j] + B[j] –
 B[i] } it was already mentioned in answer (e) . i is the column and j is the row
