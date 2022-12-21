@@ -52,13 +52,13 @@ S1,2= word[1 to 1]// cost will be 0
 S2,3 =word[2 to 2] // cost will be 0
 S3,4= word [3 to 6]
 Structure of the DP table layout is shown below,
---------
-0 1 2 3
-1 0
-2 0
-3 0
-4 0
---------
+
+0 1 2 3|
+1 0|
+2 0|
+3 0|
+4 0|
+
 Table (1) : DP structure table i=0,1,2,3 column and j=1,2,3,4 row
 
 ### (f) How is a non-zero entry of the table computed from its other entries? (Use your answer to (b) as a guide.)
@@ -90,13 +90,13 @@ DP[0,4]= min{ DP[0,1] + D[1,4] + B[4] – B[0], DP[0,2] + D[2,4] + B[4]
 - B[0], DP[0,3] + D[3,4] + B[4] – B[0]}
 =min{ (0+8+6-(-1)) , (2+5+6-(-1)) , ( 5+0+6-(-1))}
 =12
-----------
-0 1 2 3
-1 0
-2 2 0
-3 5 2 0
-4 12 8 5 0
-----------
+
+0 1 2 3 |
+1 0 |
+2 2 0 |
+3 5 2 0|
+4 12 8 5 0|
+
 we get minimum cost 12 at DP[0,4] which is DP[0,m+1]
 
 ## (g) Identify the table entries which will be non-zero. (There is a simple relationship between the row and column labels related to the problem that identifies when a table entry is non-zero.)
