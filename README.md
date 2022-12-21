@@ -31,7 +31,7 @@ HOLIDAY).
 Ans: When the break list has just one element we can get the cost without a recursive
 call or if b== j or b == -1. Already mentioned the cases in answer c
 
-### (e) Identify row and column labels associated with a dynamic programming table for computing totalCost(word[i, j], breakList). i.e. what is the structure of a table whose entries correspond exactly with totalCost(word[i,j], breakList)? (Hint: your table entries should correspond exactly to the parameters in the function you are trying to compute.)
+## (e) Identify row and column labels associated with a dynamic programming table for computing totalCost(word[i, j], breakList). i.e. what is the structure of a table whose entries correspond exactly with totalCost(word[i,j], breakList)? (Hint: your table entries should correspond exactly to the parameters in the function you are trying to compute.)
 
 Ans: Lets increase the break list size of B by 2. We will add -1 at the beginning and N-1 (N is the size of the string word). In the end, we will have the substrings S0,1, S1,2, S2,3, …. Sk,k+1. This S string represents the word[ i,j] in the parameter of the function. By parameter definition,
 final Si,j := S[ B[i]+1,…,B[j] ] ( for word word[i,j]).
